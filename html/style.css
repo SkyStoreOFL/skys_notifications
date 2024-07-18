@@ -1,0 +1,202 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.notifications {
+	position: fixed;
+	padding: 10px 20px;
+	z-index: 1000;
+	height: 25%;
+	width: 25%;
+	overflow: hidden;
+	overflow-x: hidden;
+}
+
+.notification {
+	position: relative;
+	margin: 10px 0;
+	border-radius: 5px;
+	background: #000;
+	color: white;
+	width: fit-content;
+	max-width: 100%;
+	text-wrap: break-word;
+	height: fit-content;
+	overflow: hidden;
+	filter: drop-shadow(5px 5px 0.5rem #000000a0);
+	padding: 10px 20px 10px 10px;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 20px;
+}
+
+.notification.info i {
+	color: rgb(0, 110, 255);
+}
+
+.notification.success i {
+	color: green;
+}
+
+.notification.error i {
+	color: red;
+}
+
+.notification.warning i {
+	color: orange;
+}
+
+.notifications.from-left .notification.show {
+	animation: notifyInLeft 0.6s ease-in-out forwards;
+}
+
+.notifications.from-left .notification.out {
+	animation: notifyOutLeft 0.4s ease-in-out forwards;
+}
+
+.notifications.from-right .notification.show {
+	animation: notifyInRight 0.6s ease-in-out forwards;
+}
+
+.notifications.from-right .notification.out {
+	animation: notifyOutRight 0.4s ease-in-out forwards;
+}
+
+.notifications.from-top .notification.show {
+	animation: notifyInTop 0.6s ease-in-out forwards;
+}
+
+.notifications.from-top .notification.out {
+	animation: notifyOutTop 0.4s ease-in-out forwards;
+}
+
+.notifications.from-bottom .notification.show {
+	animation: notifyInBottom 0.6s ease-in-out forwards;
+}
+
+.notifications.from-bottom .notification.out {
+	animation: notifyOutBottom 0.4s ease-in-out forwards;
+}
+
+@keyframes notifyInLeft {
+	0% {
+		transform: translateX(-200%) scaleX(0);
+	}
+	60% {
+		transform: translateX(-20%) scale(0.5);
+	}
+	80% {
+		transform: translateX(0) scale(0.8);
+	}
+	100% {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes notifyOutLeft {
+	0% {
+		transform: scaleX(1);
+	}
+	40% {
+		transform: translateX(0) scale(0.8);
+	}
+	40% {
+		transform: translateX(-20%) scale(0.5);
+	}
+	100% {
+		transform: translateX(-200%) scale(0);
+	}
+}
+
+@keyframes notifyInRight {
+	0% {
+		transform: translateX(200%) scaleX(0);
+	}
+	60% {
+		transform: translateX(20%) scale(0.5);
+	}
+	80% {
+		transform: translateX(0) scale(0.8);
+	}
+	100% {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes notifyOutRight {
+	0% {
+		transform: scaleX(1);
+	}
+	40% {
+		transform: translateX(0) scale(0.8);
+	}
+	40% {
+		transform: translateX(20%) scale(0.5);
+	}
+	100% {
+		transform: translateX(200%) scale(0);
+	}
+}
+
+@keyframes notifyInTop {
+	0% {
+		transform: translateY(-200%) scaleY(0);
+	}
+	60% {
+		transform: translateY(-20%) scale(0.5);
+	}
+	80% {
+		transform: translateX(0) scale(0.8);
+	}
+	100% {
+		transform: scaleY(1);
+	}
+}
+
+@keyframes notifyOutTop {
+	0% {
+		transform: scaleY(1);
+	}
+	40% {
+		transform: translateX(0) scale(0.8);
+	}
+	40% {
+		transform: translateY(-20%) scale(0.5);
+	}
+	100% {
+		transform: translateY(-200%) scale(0);
+	}
+}
+
+@keyframes notifyInBottom {
+	0% {
+		transform: translateY(200%) scaleY(0);
+	}
+	60% {
+		transform: translateY(20%) scale(0.5);
+	}
+	80% {
+		transform: translateX(0) scale(0.8);
+	}
+	100% {
+		transform: scaleY(1);
+	}
+}
+
+@keyframes notifyOutBottom {
+	0% {
+		transform: scaleY(1);
+	}
+	40% {
+		transform: translateX(0) scale(0.8);
+	}
+	40% {
+		transform: translateY(20%) scale(0.5);
+	}
+	100% {
+		transform: translateY(200%) scale(0);
+	}
+}
