@@ -1,8 +1,33 @@
+/* import font from file */
+@font-face {
+	font-family: "Swansea";
+	font-style: normal;
+	font-weight: 400;
+	src: url(./fonts/Swansea-q3pd.ttf) format("truetype");
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "Swansea", Arial, Helvetica, sans-serif;
+	letter-spacing: 1px;
 }
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: black;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* NOTIFICATIONS */
 
 .notifications {
 	position: fixed;
@@ -12,6 +37,10 @@
 	width: 25%;
 	overflow: hidden;
 	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .notification {
@@ -71,6 +100,23 @@
 
 .notifications.from-top .notification.out {
 	animation: notifyOutTop 0.4s ease-in-out forwards;
+}
+
+.notifications.from-bottom {
+	justify-content: flex-start;
+	flex-direction: column-reverse;
+}
+
+.notifications.from-top {
+	justify-content: flex-start;
+}
+
+.notifications.from-left {
+	align-items: flex-start;
+}
+
+.notifications.from-right {
+	align-items: flex-end;
 }
 
 .notifications.from-bottom .notification.show {
@@ -198,5 +244,193 @@
 	}
 	100% {
 		transform: translateY(200%) scale(0);
+	}
+}
+
+/* MENU */
+
+.menu {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 60%;
+	height: 50%;
+	background: #333;
+	border: #000 10px solid;
+	color: #fafafa;
+	padding: 10px 20px;
+	transform: translate(-50%, -50%);
+	border-radius: 1rem;
+	grid-template-rows: 10% 90%;
+	place-items: center;
+	grid-template-columns: 80% 20%;
+	gap: 1%;
+	animation: hideCustomization 0.5s ease-in-out forwards;
+}
+
+.menu.show {
+	animation: showCustomization 0.5s ease-in-out forwards;
+}
+
+.menu h1 {
+	font-size: 2rem;
+	width: 100%;
+	text-align: center;
+	grid-column: 1 / 3;
+	grid-row: 1;
+}
+
+.menu .positions {
+	height: 100%;
+	width: 100%;
+	padding: 10px 20px;
+	grid-column: 1;
+	grid-row: 2;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	gap: 50px 30px;
+	flex-wrap: wrap;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.menu .positions .position {
+	user-select: none;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	word-break: keep-all;
+	text-align: center;
+	gap: 10px;
+	background: #1c1c1c;
+	border-radius: 1rem;
+	white-space: nowrap;
+	padding: 15px 20px;
+	transition: all 0.3s ease-in-out;
+}
+
+.menu .positions .position:hover {
+	background: #232323;
+	scale: 1.05;
+}
+
+.menu .positions .position:active {
+	scale: 0.95;
+}
+
+.menu .positions .position.position.active {
+	background: rgb(126, 64, 2);
+	scale: 1.05;
+}
+
+.menu .positions .position img {
+	border-radius: 0.25rem;
+	height: 70px;
+	width: auto;
+	object-fit: contain;
+	aspect-ratio: 16/9;
+}
+
+.menu .buttons {
+	grid-column: 2;
+	grid-row: 2;
+	display: flex;
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.menu .buttons h3 {
+	opacity: 0.8;
+	margin-bottom: 1rem;
+}
+
+.menu .buttons button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 0.5rem;
+	background: #1c1c1c;
+	color: #fafafa;
+	font-size: 1rem;
+	height: fit-content;
+	text-align: center;
+	cursor: pointer;
+	width: 60%;
+	transition: all 0.3s ease-in-out;
+}
+
+.menu .buttons button#info {
+	background: #0072ff;
+}
+
+.menu .buttons button#info:hover {
+	background: #0059e6;
+}
+
+.menu .buttons button#success {
+	background: green;
+}
+
+.menu .buttons button#success:hover {
+	background: #008000;
+}
+
+.menu .buttons button#error {
+	background: red;
+}
+
+.menu .buttons button#error:hover {
+	background: #800000;
+}
+
+.menu .buttons button#warning {
+	background: orange;
+}
+
+.menu .buttons button#warning:hover {
+	background: #ff8c00;
+}
+
+.menu .buttons button:hover {
+	scale: 1.05;
+}
+
+.menu .buttons button:active {
+	scale: 0.95;
+}
+
+@keyframes showCustomization {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+	5% {
+		display: grid;
+	}
+	100% {
+		display: grid;
+		opacity: 1;
+	}
+}
+
+@keyframes hideCustomization {
+	0% {
+		display: grid;
+		opacity: 1;
+	}
+	90% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+		display: none;
 	}
 }
