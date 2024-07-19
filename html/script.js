@@ -50,10 +50,22 @@ const positions = {
 class Notification {
 	constructor(text, type = "info", time = Config.defaultDuration) {
 		this.msg = text;
-		this.type = type;
+		this.type = Notification.NormalizeType(type);
 		this.time = time;
 		this.notification = document.createElement("div");
 		this.inScreen = false;
+	}
+
+	static NormalizeType(type) {
+		if (
+			type === "info" ||
+			type === "success" ||
+			type === "warning" ||
+			type === "error"
+		) {
+			return type;
+		}
+		return "info";
 	}
 
 	static SetUpPosition(pos) {
@@ -90,6 +102,8 @@ class Notification {
 				return "fa-circle-exclamation";
 			case "error":
 				return "fa-circle-xmark";
+			default:
+				return "fa-circle-info";
 		}
 	}
 
