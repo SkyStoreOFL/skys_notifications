@@ -23,11 +23,13 @@ end
 
 exports('NewNotification', NewNotification)
 
---- Open the customization menu
-OpenCustomizationMenu = function ()
-    SendNUIMessage({ action = "openCustomization" })
-end
+if Config.userCustomize then
+    --- Open the customization menu
+    OpenCustomizationMenu = function ()
+        SendNUIMessage({ action = "openCustomization" })
+    end
 
-RegisterCommand(Config.CustomizationCommand, OpenCustomizationMenu, false)
-RegisterKeyMapping(Config.CustomizationCommand, Config.Lang["menu-description"], "", "")
-TriggerEvent("chat:addSuggestion", "/"..Config.CustomizationCommand, Config.Lang["menu-description"])
+    RegisterCommand(Config.CustomizationCommand, OpenCustomizationMenu, false)
+    RegisterKeyMapping(Config.CustomizationCommand, Config.Lang["menu-description"], "", "")
+    TriggerEvent("chat:addSuggestion", "/"..Config.CustomizationCommand, Config.Lang["menu-description"])
+end
