@@ -12,4 +12,5 @@ POSITIONS = {
 }
 
 Config.defaultDuration = 5000
-Config.position = POSITIONS.MIDDLE_RIGHT
+Config.defultPosition = POSITIONS.MIDDLE_RIGHT
+Config.userCustomize = true
