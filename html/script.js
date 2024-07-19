@@ -207,8 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			fetch("https://skys_notifications/close");
 		}
 	});
-
-	openCustomization();
 });
 
 window.addEventListener("message", (e) => {
