@@ -12,5 +12,31 @@ POSITIONS = {
 }
 
 Config.defaultDuration = 5000
-Config.defultPosition = POSITIONS.MIDDLE_RIGHT
+Config.defaultPosition = POSITIONS.MIDDLE_RIGHT
 Config.userCustomize = true
+Config.CustomizationCommand = "notifymenu"
+
+Config.Lang = {
+    ["test-notification"] = "Esto es una notifición de prueba",
+    ["menu-description"] = "Abre el menú de personalización de notificaciones",
+    ["html"] = {
+        ["title"] = "Posición de Notificacions",
+        ["positions"] = {
+            [POSITIONS.TOP_LEFT] = "Arriba a la Izquierda",
+            [POSITIONS.TOP_CENTER] = "Arriba al Centro",
+            [POSITIONS.TOP_RIGHT] = "Arriba a la Derecha",
+            [POSITIONS.MIDDLE_LEFT] = "Medio a la Izquierda",
+            [POSITIONS.MIDDLE_RIGHT] = "Medio a la Derecha",
+            [POSITIONS.BOTTOM_LEFT] = "Abajo a la Izquierda",
+            [POSITIONS.BOTTOM_CENTER] = "Abajo al Centro",
+            [POSITIONS.BOTTOM_RIGHT] = "Abajo a la Derecha"
+        },
+        ["test-title"] = "Probar Notificación",
+        ["test-buttons"] = {
+            ["success"] = "Éxito",
+            ["error"] = "Error",
+            ["warning"] = "Advertencia",
+            ["info"] = "Información"
+        },
+    }
+}
