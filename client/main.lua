@@ -1,0 +1,33 @@
+Citizen.CreateThread(function()
+    Wait(500)
+    SendNUIMessage({
+        action = "config",
+        defaultPosition = Config.defaultPosition,
+        defaultDuration = Config.defaultDuration,
+        lang = Config.Lang,
+    })
+end)
+
+--- Send a notification to the NUI
+--- @param message string
+--- @param type string
+--- @param duration number
+NewNotification = function (message, type, duration)
+    SendNUIMessage({
+        action = "notification",
+        text = message,
+        type = type,
+        duration = duration
+    })
+end
+
+exports('NewNotification', NewNotification)
+
+--- Open the customization menu
+OpenCustomizationMenu = function ()
+    SendNUIMessage({ action = "openCustomization" })
+end
+
+RegisterCommand(Config.CustomizationCommand, OpenCustomizationMenu, false)
+RegisterKeyMapping(Config.CustomizationCommand, Config.Lang["menu-description"], "", "")
+TriggerEvent("chat:addSuggestion", "/"..Config.CustomizationCommand, Config.Lang["menu-description"])
