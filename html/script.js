@@ -1,21 +1,54 @@
 const $ = (query) => document.querySelector(query);
 const $$ = (query) => document.querySelectorAll(query);
+let isCustomizing = false;
+let Config = {
+	defaultPosition: 1,
+	defaultDuration: 3000,
+	lang: {
+		["test-notification"]: "This is a test notification",
+		["html"]: {
+			["title"]: "Notification Positions",
+			["positions"]: {
+				1: "Top Left",
+				2: "Top Center",
+				3: "Top Right",
+				4: "Middle Left",
+				5: "Middle Right",
+				6: "Bottom Left",
+				7: "Bottom Center",
+				8: "Bottom Right",
+			},
+			["test-title"]: "Test Notification",
+			["test-buttons"]: {
+				["info"]: "Information",
+				["success"]: "Success",
+				["warning"]: "Warning",
+				["error"]: "Error",
+			},
+		},
+	},
+};
 
 let Queue = [];
 
 const positions = {
-	1: { x: "0", y: "0", anim: "from-left from-top" },
-	2: { x: "37.5%", y: "0", anim: "from-top" },
-	3: { x: "75%", y: "0", anim: "from-right from-top" },
-	4: { x: "0", y: "37.5%", anim: "from-left" },
-	5: { x: "75%", y: "37.5%", anim: "from-right" },
-	6: { x: "0", y: "75%", anim: "from-left from-bottom" },
-	7: { x: "37.5%", y: "75%", anim: "from-bottom" },
-	8: { x: "75%", y: "75%", anim: "from-right from-bottom" },
+	1: { x: "0", y: "0", anim: "from-left from-top", name: "top-left" },
+	2: { x: "37.5%", y: "0", anim: "from-top", name: "top-middle" },
+	3: { x: "75%", y: "0", anim: "from-right from-top", name: "top-right" },
+	4: { x: "0", y: "37.5%", anim: "from-left", name: "middle-left" },
+	5: { x: "75%", y: "37.5%", anim: "from-right", name: "middle-right" },
+	6: { x: "0", y: "75%", anim: "from-left from-bottom", name: "bottom-left" },
+	7: { x: "37.5%", y: "75%", anim: "from-bottom", name: "bottom-middle" },
+	8: {
+		x: "75%",
+		y: "75%",
+		anim: "from-right from-bottom",
+		name: "bottom-right",
+	},
 };
 
 class Notification {
-	constructor(text, type = "info", time = 3000) {
+	constructor(text, type = "info", time = Config.defaultDuration) {
 		this.msg = text;
 		this.type = type;
 		this.time = time;
@@ -81,7 +114,7 @@ class Notification {
 
 		setTimeout(() => {
 			this.remove();
-		}, 3000);
+		}, this.time);
 	}
 
 	remove() {
@@ -104,17 +137,45 @@ function createNotification(text, type, time) {
 	}
 }
 
-function testNotify(type = "info") {
-	createNotification("This is an info notification", type, 2000);
-}
-
 function openCustomization() {
-	$(".menu").classList.toggle("show");
+	$(".menu").classList.add("show");
+	isCustomizing = true;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+	let positionsHtml = Object.keys(Config.lang["html"]["positions"])
+		.map((pos) => {
+			return `
+			<div class="position" data-position="${pos}">
+				<img src="images/${positions[pos].name}.png" />
+				<h3>${Config.lang["html"]["positions"][pos]}</h3>
+			</div>
+		`;
+		})
+		.join("");
+
+	let testButtons = Object.keys(Config.lang["html"]["test-buttons"])
+		.map((btn) => {
+			return `
+				<button id="${btn}">${Config.lang["html"]["test-buttons"][btn]}</button>
+			`;
+		})
+		.join("");
+
+	$(".menu").innerHTML = `
+		<h1>${Config.lang["html"]["title"]}</h1>
+		<div class="positions">
+			${positionsHtml}
+		</div>
+		<div class="buttons">
+			<h3>${Config.lang["html"]["test-title"]}</h3>
+			${testButtons}
+		</div>
+	`;
+
 	Notification.SetUpPosition(
-		Number(window.localStorage.getItem("notificationPosition")) || 1
+		Number(window.localStorage.getItem("notificationPosition")) ||
+			Config.defaultPosition
 	);
 
 	$$(".position").forEach((pos) => {
@@ -125,7 +186,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	$$(".buttons button").forEach((btn) => {
 		btn.addEventListener("click", (e) => {
-			createNotification("Esto es una prueba", e.target.id);
+			createNotification(Config.lang["test-notification"], e.target.id);
 		});
 	});
+
+	window.addEventListener("contextmenu", function (e) {
+		e.preventDefault();
+		if (!isCustomizing) return;
+		$(".menu").classList.remove("show");
+		isCustomizing = false;
+		fetch("https://skys_notifications/close");
+	});
+
+	window.addEventListener("keydown", function (e) {
+		e.preventDefault();
+		if (!isCustomizing) return;
+		if (e.key === "Escape" || e.key === "Backspace") {
+			$(".menu").classList.remove("show");
+			isCustomizing = false;
+			fetch("https://skys_notifications/close");
+		}
+	});
+
+	openCustomization();
+});
+
+window.addEventListener("message", (e) => {
+	if (e.data.action === "notification") {
+		createNotification(e.data.text, e.data.type, e.data.duration);
+	} else if (e.data.action === "openCustomization") {
+		openCustomization();
+	} else if (e.data.action === "config") {
+		Config.defaultPosition = e.data.defaultPosition;
+		Config.defaultDuration = e.data.defaultDuration;
+		Config.lang = e.data.lang;
+	}
 });
