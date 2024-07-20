@@ -26,8 +26,14 @@ exports('NewNotification', NewNotification)
 if Config.userCustomize then
     --- Open the customization menu
     OpenCustomizationMenu = function ()
+        SetNuiFocus(true, true)
         SendNUIMessage({ action = "openCustomization" })
     end
+
+    RegisterNuiCallback("close", function (data, cb)
+        SetNuiFocus(false, false)
+        cb("ok")
+    end)
 
     RegisterCommand(Config.CustomizationCommand, OpenCustomizationMenu, false)
     RegisterKeyMapping(Config.CustomizationCommand, Config.Lang["menu-description"], "", "")
