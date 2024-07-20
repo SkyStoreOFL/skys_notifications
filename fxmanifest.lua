@@ -18,5 +18,7 @@ shared_scripts {
 files {
     'html/index.html',
     'html/style.css',
-    'html/script.js'
+    'html/script.js',
+    'html/images/*.png',
+    'html/fonts/Swansea-q3pd.ttf'
 }
