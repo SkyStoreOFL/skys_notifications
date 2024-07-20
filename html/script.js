@@ -156,23 +156,26 @@ function openCustomization() {
 	isCustomizing = true;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", resetNui);
+
+function resetNui() {
 	let positionsHtml = Object.keys(Config.lang["html"]["positions"])
 		.map((pos) => {
+			if (pos < 1 || pos > 8) return;
 			return `
-			<div class="position" data-position="${pos}">
-				<img src="images/${positions[pos].name}.png" />
-				<h3>${Config.lang["html"]["positions"][pos]}</h3>
-			</div>
-		`;
+				<div class="position" data-position="${pos}">
+					<img src="images/${positions[pos].name}.png" />
+					<h3>${Config.lang["html"]["positions"][pos]}</h3>
+				</div>
+			`;
 		})
 		.join("");
 
 	let testButtons = Object.keys(Config.lang["html"]["test-buttons"])
 		.map((btn) => {
 			return `
-				<button id="${btn}">${Config.lang["html"]["test-buttons"][btn]}</button>
-			`;
+			<button id="${btn}">${Config.lang["html"]["test-buttons"][btn]}</button>
+		`;
 		})
 		.join("");
 
@@ -221,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			fetch("https://skys_notifications/close");
 		}
 	});
-});
+}
 
 window.addEventListener("message", (e) => {
 	if (e.data.action === "notification") {
@@ -232,5 +235,6 @@ window.addEventListener("message", (e) => {
 		Config.defaultPosition = e.data.defaultPosition;
 		Config.defaultDuration = e.data.defaultDuration;
 		Config.lang = e.data.lang;
+		resetNui();
 	}
 });
