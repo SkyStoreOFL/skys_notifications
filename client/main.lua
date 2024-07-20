@@ -1,12 +1,4 @@
-Citizen.CreateThread(function()
-    Wait(500)
-    SendNUIMessage({
-        action = "config",
-        defaultPosition = Config.defaultPosition,
-        defaultDuration = Config.defaultDuration,
-        lang = Config.Lang,
-    })
-end)
+local sendConfig = true
 
 --- Send a notification to the NUI
 --- @param message string
@@ -26,6 +18,16 @@ exports('NewNotification', NewNotification)
 if Config.userCustomize then
     --- Open the customization menu
     OpenCustomizationMenu = function ()
+        if sendConfig then
+            SendNUIMessage({
+                action = "config",
+                defaultPosition = Config.defaultPosition,
+                defaultDuration = Config.defaultDuration,
+                lang = Config.Lang,
+            })
+            sendConfig = false
+        end
+    
         SetNuiFocus(true, true)
         SendNUIMessage({ action = "openCustomization" })
     end
