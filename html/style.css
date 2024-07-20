@@ -54,7 +54,7 @@
 	text-wrap: break-word;
 	height: fit-content;
 	overflow: hidden;
-	filter: drop-shadow(5px 5px 0.5rem #000000a0);
+	filter: drop-shadow(5px 5px 0.5rem #ffffff4e);
 	padding: 10px 20px 10px 10px;
 	display: flex;
 	justify-content: start;
@@ -265,11 +265,13 @@
 	place-items: center;
 	grid-template-columns: 80% 20%;
 	gap: 1%;
+	display: grid;
 	animation: hideCustomization 0.5s ease-in-out forwards;
 }
 
 .menu.show {
 	animation: showCustomization 0.5s ease-in-out forwards;
+	display: grid;
 }
 
 .menu h1 {
@@ -423,7 +425,6 @@
 
 @keyframes hideCustomization {
 	0% {
-		display: grid;
 		opacity: 1;
 	}
 	90% {
@@ -431,6 +432,5 @@
 	}
 	100% {
 		opacity: 0;
-		display: none;
 	}
 }
