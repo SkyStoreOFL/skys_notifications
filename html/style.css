@@ -32,9 +32,9 @@
 .notifications {
 	position: fixed;
 	padding: 10px 20px;
-	z-index: 1000;
-	height: 25%;
-	width: 25%;
+	z-index: 80;
+	height: 35%;
+	width: 35%;
 	overflow: hidden;
 	overflow-x: hidden;
 	display: flex;
@@ -47,19 +47,40 @@
 	position: relative;
 	margin: 10px 0;
 	border-radius: 5px;
-	background: #000;
+	background: rgb(130, 54, 0);
 	color: white;
 	width: fit-content;
 	max-width: 100%;
 	text-wrap: break-word;
 	height: fit-content;
-	overflow: hidden;
 	filter: drop-shadow(5px 5px 0.5rem #ffffff4e);
 	padding: 10px 20px 10px 10px;
 	display: flex;
+	flex-direction: row;
 	justify-content: start;
 	align-items: center;
 	gap: 20px;
+}
+
+.notification span {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: start;
+	gap: 5px;
+}
+
+.notification i {
+	font-size: 1.2rem;
+	filter: drop-shadow(2px 2px 0.5rem #ffffff4e);
+}
+
+.notification h2 {
+	font-size: 1rem;
+}
+
+.notification p {
+	font-size: 0.8rem;
 }
 
 .notification.info i {
@@ -75,7 +96,7 @@
 }
 
 .notification.warning i {
-	color: orange;
+	color: rgb(167, 91, 5);
 }
 
 .notifications.from-left .notification.show {
@@ -265,6 +286,7 @@
 	place-items: center;
 	grid-template-columns: 80% 20%;
 	gap: 1%;
+	z-index: 90;
 	display: grid;
 	animation: hideCustomization 0.5s ease-in-out forwards;
 }

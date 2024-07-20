@@ -1,6 +1,14 @@
 const $ = (query) => document.querySelector(query);
 const $$ = (query) => document.querySelectorAll(query);
 let isCustomizing = false;
+
+let notifyTypes = {
+	info: "#76b9fa",
+	success: "#549c4b",
+	warning: "#9dc56d",
+	error: "#aa6161",
+};
+
 let Config = {
 	defaultPosition: 1,
 	defaultDuration: 3000,
@@ -33,27 +41,36 @@ let Queue = [];
 
 const positions = {
 	1: { x: "0", y: "0", anim: "from-left from-top", name: "top-left" },
-	2: { x: "37.5%", y: "0", anim: "from-top", name: "top-middle" },
-	3: { x: "75%", y: "0", anim: "from-right from-top", name: "top-right" },
-	4: { x: "0", y: "37.5%", anim: "from-left", name: "middle-left" },
-	5: { x: "75%", y: "37.5%", anim: "from-right", name: "middle-right" },
-	6: { x: "0", y: "75%", anim: "from-left from-bottom", name: "bottom-left" },
-	7: { x: "37.5%", y: "75%", anim: "from-bottom", name: "bottom-middle" },
+	2: { x: "27.5%", y: "0", anim: "from-top", name: "top-middle" },
+	3: { x: "65%", y: "0", anim: "from-right from-top", name: "top-right" },
+	4: { x: "0", y: "27.5%", anim: "from-left", name: "middle-left" },
+	5: { x: "65%", y: "27.5%", anim: "from-right", name: "middle-right" },
+	6: { x: "0", y: "65%", anim: "from-left from-bottom", name: "bottom-left" },
+	7: { x: "27.5%", y: "65%", anim: "from-bottom", name: "bottom-middle" },
 	8: {
-		x: "75%",
-		y: "75%",
+		x: "65%",
+		y: "65%",
 		anim: "from-right from-bottom",
 		name: "bottom-right",
 	},
 };
 
 class Notification {
-	constructor(text, type = "info", time = Config.defaultDuration) {
+	constructor(
+		text,
+		type = "info",
+		time = Config.defaultDuration,
+		title = null,
+		options = {}
+	) {
+		this.title = title;
 		this.msg = text;
 		this.type = Notification.NormalizeType(type);
 		this.time = time;
 		this.notification = document.createElement("div");
+		this.options = options;
 		this.inScreen = false;
+		console.log(this);
 	}
 
 	static NormalizeType(type) {
@@ -121,12 +138,21 @@ class Notification {
 		this.notification.classList.add(this.type);
 		this.notification.innerHTML = `
 			<i class=" fa-solid ${Notification.GetApropiateIcon(this.type)}"></i>
-			<p>${this.msg}</p>
+			<span>
+				<h2>${this.title || Config.lang["html"]["test-buttons"][this.type]}</h2>
+				<p>${this.msg}</p>
+			</span>
 		`;
+		this.notification.style.background = `linear-gradient(
+			90deg,
+			${notifyTypes[this.type]} 0.5%,
+			rgb(130, 54, 0) 20%
+		)`;
 		$(".notifications").appendChild(this.notification);
 		this.inScreen = true;
 
 		setTimeout(() => {
+			if (this.options && this.options.persistent) return;
 			this.remove();
 		}, this.time);
 	}
@@ -142,8 +168,8 @@ class Notification {
 	}
 }
 
-function createNotification(text, type, time) {
-	Queue.push(new Notification(text, type, time));
+function createNotification(text, type, time, title, options) {
+	Queue.push(new Notification(text, type, time, title, options));
 	const showing = $$(".notification").length;
 	if (showing < 4) {
 		Queue[0].show();
@@ -154,6 +180,21 @@ function createNotification(text, type, time) {
 function openCustomization() {
 	$(".menu").classList.add("show");
 	isCustomizing = true;
+}
+
+function test() {
+	createNotification("This is a test notification", "info", 5000, null, {
+		persistent: true,
+	});
+	createNotification("This is a test notification", "success", 5000, null, {
+		persistent: true,
+	});
+	createNotification("This is a test notification", "warning", 5000, null, {
+		persistent: true,
+	});
+	createNotification("This is a test notification", "error", 5000, null, {
+		persistent: true,
+	});
 }
 
 document.addEventListener("DOMContentLoaded", resetNui);
@@ -208,7 +249,6 @@ function resetNui() {
 	});
 
 	window.addEventListener("contextmenu", function (e) {
-		e.preventDefault();
 		if (!isCustomizing) return;
 		$(".menu").classList.remove("show");
 		isCustomizing = false;
@@ -224,11 +264,18 @@ function resetNui() {
 			fetch("https://skys_notifications/close");
 		}
 	});
+
+	// test();
 }
 
 window.addEventListener("message", (e) => {
 	if (e.data.action === "notification") {
-		createNotification(e.data.text, e.data.type, e.data.duration);
+		createNotification(
+			e.data.text,
+			e.data.type,
+			e.data.duration,
+			e.data.title
+		);
 	} else if (e.data.action === "openCustomization") {
 		openCustomization();
 	} else if (e.data.action === "config") {
