@@ -61,6 +61,7 @@ class Notification {
 		type = "info",
 		time = Config.defaultDuration,
 		title = null,
+		icon = null,
 		options = {}
 	) {
 		this.title = title;
@@ -68,6 +69,7 @@ class Notification {
 		this.type = Notification.NormalizeType(type);
 		this.time = time;
 		this.notification = document.createElement("div");
+		this.icon = icon;
 		this.options = options;
 		this.inScreen = false;
 		console.log(this);
@@ -137,17 +139,14 @@ class Notification {
 		this.notification.classList.add("show");
 		this.notification.classList.add(this.type);
 		this.notification.innerHTML = `
-			<i class=" fa-solid ${Notification.GetApropiateIcon(this.type)}"></i>
+			<i class=" fa-solid ${
+				this.icon ?? Notification.GetApropiateIcon(this.type)
+			}"></i>
 			<span>
 				<h2>${this.title || Config.lang["html"]["test-buttons"][this.type]}</h2>
 				<p>${this.msg}</p>
 			</span>
 		`;
-		this.notification.style.background = `linear-gradient(
-			90deg,
-			${notifyTypes[this.type]} 0.5%,
-			rgb(130, 54, 0) 20%
-		)`;
 		$(".notifications").appendChild(this.notification);
 		this.inScreen = true;
 
@@ -168,8 +167,8 @@ class Notification {
 	}
 }
 
-function createNotification(text, type, time, title, options) {
-	Queue.push(new Notification(text, type, time, title, options));
+function createNotification(text, type, time, title, icon, options) {
+	Queue.push(new Notification(text, type, time, title, icon, options));
 	const showing = $$(".notification").length;
 	if (showing < 4) {
 		Queue[0].show();
@@ -274,7 +273,8 @@ window.addEventListener("message", (e) => {
 			e.data.text,
 			e.data.type,
 			e.data.duration,
-			e.data.title
+			e.data.title,
+			e.data.icon
 		);
 	} else if (e.data.action === "openCustomization") {
 		openCustomization();

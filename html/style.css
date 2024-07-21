@@ -47,7 +47,7 @@
 	position: relative;
 	margin: 10px 0;
 	border-radius: 5px;
-	background: rgb(130, 54, 0);
+	background: #d56c03;
 	color: white;
 	width: fit-content;
 	max-width: 100%;
@@ -72,7 +72,7 @@
 
 .notification i {
 	font-size: 1.2rem;
-	filter: drop-shadow(2px 2px 0.5rem #ffffff4e);
+	filter: drop-shadow(2px 2px 0.5rem #ffffff8f);
 }
 
 .notification h2 {
@@ -96,7 +96,7 @@
 }
 
 .notification.warning i {
-	color: rgb(167, 91, 5);
+	color: rgb(149, 67, 15);
 }
 
 .notifications.from-left .notification.show {

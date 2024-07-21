@@ -4,12 +4,14 @@ local sendConfig = true
 --- @param message string
 --- @param type string
 --- @param duration number
-NewNotification = function (message, type, duration)
+NewNotification = function (message, type, duration, icon, title)
     SendNUIMessage({
         action = "notification",
         text = message,
         type = type,
-        duration = duration
+        duration = duration,
+        icon = icon,
+        title = title
     })
 end
 
