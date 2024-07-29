@@ -34,7 +34,7 @@
 	padding: 10px 20px;
 	z-index: 80;
 	height: 35%;
-	width: 35%;
+	width: 20%;
 	overflow: hidden;
 	overflow-x: hidden;
 	display: flex;
@@ -47,19 +47,18 @@
 	position: relative;
 	margin: 10px 0;
 	border-radius: 5px;
-	background: #d56c03;
-	color: white;
-	width: fit-content;
+	background: #00000050;
+	width: 100%;
 	max-width: 100%;
 	text-wrap: break-word;
 	height: fit-content;
 	filter: drop-shadow(5px 5px 0.5rem #ffffff4e);
-	padding: 10px 20px 10px 10px;
+	padding: 15px;
 	display: flex;
 	flex-direction: row;
 	justify-content: start;
 	align-items: center;
-	gap: 20px;
+	gap: 10px;
 }
 
 .notification span {
@@ -68,35 +67,53 @@
 	justify-content: center;
 	align-items: start;
 	gap: 5px;
+	color: white;
 }
 
 .notification i {
 	font-size: 1.2rem;
-	filter: drop-shadow(2px 2px 0.5rem #ffffff8f);
+	font-weight: 600;
 }
 
 .notification h2 {
 	font-size: 1rem;
+	line-height: 0.6;
 }
 
 .notification p {
 	font-size: 0.8rem;
 }
 
-.notification.info i {
-	color: rgb(0, 110, 255);
+.notification .decor-lat {
+	position: absolute;
+	top: 25%;
+	left: -2.5px;
+	height: 50%;
+	width: 5px;
+	background: currentColor;
+	border-radius: 5px;
 }
 
-.notification.success i {
-	color: green;
+.notification .decor-top {
+	position: absolute;
+	top: 0;
+	right: 15px;
+	background: transparent;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	color: currentColor;
+	overflow: hidden;
+	gap: 5px;
 }
 
-.notification.error i {
-	color: red;
-}
-
-.notification.warning i {
-	color: rgb(149, 67, 15);
+.notification .decor-top li {
+	margin-top: -5px;
+	height: 14px;
+	width: 10px;
+	border-radius: 45%;
+	background: currentColor;
 }
 
 .notifications.from-left .notification.show {
