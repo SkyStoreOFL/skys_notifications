@@ -3,10 +3,10 @@ const $$ = (query) => document.querySelectorAll(query);
 let isCustomizing = false;
 
 let notifyTypes = {
-	info: "#76b9fa",
-	success: "#549c4b",
-	warning: "#9dc56d",
-	error: "#aa6161",
+	info: "#3d8ff5",
+	success: "#35ab26",
+	warning: "#d3a042",
+	error: "#bd2828",
 };
 
 let Config = {
@@ -41,14 +41,14 @@ let Queue = [];
 
 const positions = {
 	1: { x: "0", y: "0", anim: "from-left from-top", name: "top-left" },
-	2: { x: "27.5%", y: "0", anim: "from-top", name: "top-middle" },
-	3: { x: "65%", y: "0", anim: "from-right from-top", name: "top-right" },
+	2: { x: "40	%", y: "0", anim: "from-top", name: "top-middle" },
+	3: { x: "80%", y: "0", anim: "from-right from-top", name: "top-right" },
 	4: { x: "0", y: "27.5%", anim: "from-left", name: "middle-left" },
-	5: { x: "65%", y: "27.5%", anim: "from-right", name: "middle-right" },
+	5: { x: "80%", y: "27.5%", anim: "from-right", name: "middle-right" },
 	6: { x: "0", y: "65%", anim: "from-left from-bottom", name: "bottom-left" },
-	7: { x: "27.5%", y: "65%", anim: "from-bottom", name: "bottom-middle" },
+	7: { x: "40%", y: "65%", anim: "from-bottom", name: "bottom-middle" },
 	8: {
-		x: "65%",
+		x: "80%",
 		y: "65%",
 		anim: "from-right from-bottom",
 		name: "bottom-right",
@@ -118,7 +118,7 @@ class Notification {
 			case "success":
 				return "fa-circle-check";
 			case "warning":
-				return "fa-circle-exclamation";
+				return "fa-triangle-exclamation";
 			case "error":
 				return "fa-circle-xmark";
 			default:
@@ -138,7 +138,14 @@ class Notification {
 		this.notification.classList.add("notification");
 		this.notification.classList.add("show");
 		this.notification.classList.add(this.type);
+		this.notification.style.color = notifyTypes[this.type];
 		this.notification.innerHTML = `
+			<div class="decor-lat"></div>
+			<div class="decor-top">
+				<li></li>
+				<li></li>
+				<li></li>
+			</div>
 			<i class=" fa-solid ${
 				this.icon ?? Notification.GetApropiateIcon(this.type)
 			}"></i>
@@ -182,17 +189,51 @@ function openCustomization() {
 }
 
 function test() {
-	createNotification("This is a test notification", "info", 5000, null, {
-		persistent: true,
-	});
-	createNotification("This is a test notification", "success", 5000, null, {
-		persistent: true,
-	});
-	createNotification("This is a test notification", "warning", 5000, null, {
-		persistent: true,
-	});
-	createNotification("This is a test notification", "error", 5000, null, {
-		persistent: true,
+	createNotification(
+		"This is a test notification",
+		"info",
+		5000,
+		null,
+		null,
+		{
+			persistent: true,
+		}
+	);
+	createNotification(
+		"This is a test notification",
+		"success",
+		5000,
+		null,
+		null,
+		{
+			persistent: true,
+		}
+	);
+	createNotification(
+		"This is a test notification",
+		"warning",
+		5000,
+		null,
+		null,
+		{
+			persistent: true,
+		}
+	);
+	createNotification(
+		"Your current account balance is 19356$.",
+		"error",
+		5000,
+		null,
+		null,
+		{
+			persistent: true,
+		}
+	);
+
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "F1") {
+			openCustomization();
+		}
 	});
 }
 
@@ -237,12 +278,14 @@ function resetNui() {
 
 	$$(".position").forEach((pos) => {
 		pos.addEventListener("click", () => {
+			if (!isCustomizing) return;
 			Notification.SetUpPosition(Number(pos.dataset["position"]), pos);
 		});
 	});
 
 	$$(".buttons button").forEach((btn) => {
 		btn.addEventListener("click", (e) => {
+			if (!isCustomizing) return;
 			createNotification(Config.lang["test-notification"], e.target.id);
 		});
 	});
@@ -264,7 +307,7 @@ function resetNui() {
 		}
 	});
 
-	// test();
+	test();
 }
 
 window.addEventListener("message", (e) => {
