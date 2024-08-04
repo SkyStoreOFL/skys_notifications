@@ -22,6 +22,10 @@ Config.Lang = {
     ["html"] = {
         ["title"] = "Posición de Notificacions",
         ["sounds-title"] = "Ajustes de Sonido:",
+        ["sound-button"] = {
+            ["enable"] = "Activar Sonido",
+            ["disable"] = "Desactivar Sonido"
+        },
         ["positions"] = {
             [POSITIONS.TOP_LEFT] = "Arriba Izquierda",
             [POSITIONS.TOP_CENTER] = "Arriba Centro",
