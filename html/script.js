@@ -21,6 +21,10 @@ let Config = {
 		["html"]: {
 			["title"]: "Notification Positions",
 			["sounds-title"]: "Sounds Settings:",
+			["sound-button"]: {
+				["enable"]: "Enable",
+				["disable"]: "Disable",
+			},
 			["positions"]: {
 				1: "Top Left",
 				2: "Top Center",
@@ -294,7 +298,11 @@ function resetNui() {
 		</div>
 		<div class="volume">
 			<h3>${Config.lang["html"]["sounds-title"]}</h3>
-			<button id="togglesound">${soundEnabled ? "Disable" : "Enable"}</button>
+			<button id="togglesound">${
+				soundEnabled
+					? Config.lang["html"]["sound-button"]["disable"]
+					: Config.lang["html"]["sound-button"]["enable"]
+			}</button>
 			<div class="volumeindicator">
 				<input
 					type="range"
@@ -330,7 +338,7 @@ function resetNui() {
 
 	$("#volume").addEventListener("input", (e) => {
 		soundVolume = e.target.value / 100;
-		$("#volumetext]").value = e.target.value;
+		$("#volumetext").value = e.target.value;
 		window.localStorage.setItem("notificationSoundVolume", soundVolume);
 	});
 
@@ -344,7 +352,9 @@ function resetNui() {
 
 	$("#togglesound").addEventListener("click", (e) => {
 		soundEnabled = !soundEnabled;
-		e.target.innerText = soundEnabled ? "Disable" : "Enable";
+		e.target.innerText = soundEnabled
+			? Config.lang["html"]["sound-button"]["disable"]
+			: Config.lang["html"]["sound-button"]["enable"];
 		window.localStorage.setItem("notificationSoundEnabled", soundEnabled);
 	});
 
@@ -366,7 +376,7 @@ function resetNui() {
 	});
 
 	// test();
-	openCustomization();
+	// openCustomization();
 }
 
 window.addEventListener("message", (e) => {
