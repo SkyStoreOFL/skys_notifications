@@ -20,5 +20,6 @@ files {
     'html/style.css',
     'html/script.js',
     'html/images/*.png',
+    'html/sounds/*.mp3',
     'html/fonts/Swansea-q3pd.ttf'
 }
