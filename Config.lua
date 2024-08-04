@@ -17,10 +17,11 @@ Config.userCustomize = true
 Config.CustomizationCommand = "notifymenu"
 
 Config.Lang = {
-    ["test-notification"] = "Esto es una notifición de prueba",
+    ["test-notification"] = "Esto es una notificación de prueba",
     ["menu-description"] = "Abre el menú de personalización de notificaciones",
     ["html"] = {
         ["title"] = "Posición de Notificacions",
+        ["sounds-title"] = "Ajustes de Sonido:",
         ["positions"] = {
             [POSITIONS.TOP_LEFT] = "Arriba Izquierda",
             [POSITIONS.TOP_CENTER] = "Arriba Centro",
@@ -36,7 +37,8 @@ Config.Lang = {
             ["success"] = "Éxito",
             ["error"] = "Error",
             ["warning"] = "Advertencia",
-            ["info"] = "Información"
+            ["info"] = "Información",
+            ["bank"] = "Banco"
         },
     }
 }
