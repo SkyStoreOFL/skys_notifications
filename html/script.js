@@ -1,12 +1,16 @@
 const $ = (query) => document.querySelector(query);
 const $$ = (query) => document.querySelectorAll(query);
 let isCustomizing = false;
+let soundEnabled =
+	window.localStorage.getItem("notificationSoundEnabled") || true;
+let soundVolume = window.localStorage.getItem("notificationSoundVolume") || 0.4;
 
 let notifyTypes = {
 	info: "#3d8ff5",
 	success: "#35ab26",
 	warning: "#d3a042",
 	error: "#bd2828",
+	bank: "#adff2f",
 };
 
 let Config = {
@@ -16,6 +20,7 @@ let Config = {
 		["test-notification"]: "This is a test notification",
 		["html"]: {
 			["title"]: "Notification Positions",
+			["sounds-title"]: "Sounds Settings:",
 			["positions"]: {
 				1: "Top Left",
 				2: "Top Center",
@@ -32,6 +37,7 @@ let Config = {
 				["success"]: "Success",
 				["warning"]: "Warning",
 				["error"]: "Error",
+				["bank"]: "Bank",
 			},
 		},
 	},
@@ -72,7 +78,6 @@ class Notification {
 		this.icon = icon;
 		this.options = options;
 		this.inScreen = false;
-		console.log(this);
 	}
 
 	static NormalizeType(type) {
@@ -80,7 +85,8 @@ class Notification {
 			type === "info" ||
 			type === "success" ||
 			type === "warning" ||
-			type === "error"
+			type === "error" ||
+			type === "bank"
 		) {
 			return type;
 		}
@@ -121,6 +127,8 @@ class Notification {
 				return "fa-triangle-exclamation";
 			case "error":
 				return "fa-circle-xmark";
+			case "bank":
+				return "fa-sack-dollar";
 			default:
 				return "fa-circle-info";
 		}
@@ -156,6 +164,11 @@ class Notification {
 		`;
 		$(".notifications").appendChild(this.notification);
 		this.inScreen = true;
+		if (soundEnabled) {
+			const sound = new Audio(`./sounds/${this.type}.mp3`);
+			sound.volume = soundVolume;
+			sound.play();
+		}
 
 		setTimeout(() => {
 			if (this.options && this.options.persistent) return;
@@ -220,8 +233,18 @@ function test() {
 		}
 	);
 	createNotification(
-		"Your current account balance is 19356$.",
+		"This is a test notification",
 		"error",
+		5000,
+		null,
+		null,
+		{
+			persistent: true,
+		}
+	);
+	createNotification(
+		"This is a test notification",
+		"bank",
 		5000,
 		null,
 		null,
@@ -269,6 +292,21 @@ function resetNui() {
 			<h3>${Config.lang["html"]["test-title"]}</h3>
 			${testButtons}
 		</div>
+		<div class="volume">
+			<h3>${Config.lang["html"]["sounds-title"]}</h3>
+			<button id="togglesound">${soundEnabled ? "Disable" : "Enable"}</button>
+			<div class="volumeindicator">
+				<input
+					type="range"
+					min="0"
+					max="100"
+					value="${soundVolume * 100}"
+					id="volume" />
+				<input id="volumetext" type="number" min="0" max="100" value="${
+					soundVolume * 100
+				}" />
+			</div>
+		</div>
 	`;
 
 	Notification.SetUpPosition(
@@ -290,6 +328,26 @@ function resetNui() {
 		});
 	});
 
+	$("#volume").addEventListener("input", (e) => {
+		soundVolume = e.target.value / 100;
+		$("#volumetext]").value = e.target.value;
+		window.localStorage.setItem("notificationSoundVolume", soundVolume);
+	});
+
+	$("#volumetext").addEventListener("input", (e) => {
+		if (e.target.value < 0 || e.target.value === "") e.target.value = 0;
+		if (e.target.value > 100) e.target.value = 100;
+		soundVolume = e.target.value / 100;
+		$("#volume").value = e.target.value;
+		window.localStorage.setItem("notificationSoundVolume", soundVolume);
+	});
+
+	$("#togglesound").addEventListener("click", (e) => {
+		soundEnabled = !soundEnabled;
+		e.target.innerText = soundEnabled ? "Disable" : "Enable";
+		window.localStorage.setItem("notificationSoundEnabled", soundEnabled);
+	});
+
 	window.addEventListener("contextmenu", function (e) {
 		if (!isCustomizing) return;
 		$(".menu").classList.remove("show");
@@ -298,16 +356,17 @@ function resetNui() {
 	});
 
 	window.addEventListener("keydown", function (e) {
-		e.preventDefault();
 		if (!isCustomizing) return;
-		if (e.key === "Escape" || e.key === "Backspace") {
+		if (e.key === "Escape") {
+			e.preventDefault();
 			$(".menu").classList.remove("show");
 			isCustomizing = false;
 			fetch("https://skys_notifications/close");
 		}
 	});
 
-	test();
+	// test();
+	openCustomization();
 }
 
 window.addEventListener("message", (e) => {

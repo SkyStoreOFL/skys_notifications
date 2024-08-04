@@ -54,6 +54,25 @@
 				<button id="success">Éxito</button>
 				<button id="warning">Advertencia</button>
 				<button id="error">Error</button>
+				<button id="bank">Bank</button>
+			</div>
+			<div class="volume">
+				<h3>Sonido de Notificación:</h3>
+				<button>Enable/Disable</button>
+				<div class="volumeindicator">
+					<input
+						type="range"
+						min="0"
+						max="100"
+						value="40"
+						id="volume" />
+					<input
+						id="volumetext"
+						type="number"
+						min="0"
+						max="100"
+						value="${soundVolume * 100}" />
+				</div>
 			</div>
 		</section>
 	</body>

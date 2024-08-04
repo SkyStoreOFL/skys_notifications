@@ -292,14 +292,14 @@
 	top: 50%;
 	left: 50%;
 	width: 60%;
-	height: 50%;
+	height: 60%;
 	background: #333;
 	border: #000 10px solid;
 	color: #fafafa;
 	padding: 10px 20px;
 	transform: translate(-50%, -50%);
 	border-radius: 1rem;
-	grid-template-rows: 10% 90%;
+	grid-template-rows: 10% 70% 20%;
 	place-items: center;
 	grid-template-columns: 80% 20%;
 	gap: 1%;
@@ -440,12 +440,89 @@
 	background: #ff8c00;
 }
 
+.menu .buttons button#bank {
+	background: #81c719;
+}
+
+.menu .buttons button#bank:hover {
+	background: #5a9304;
+}
+
 .menu .buttons button:hover {
 	scale: 1.05;
 }
 
 .menu .buttons button:active {
 	scale: 0.95;
+}
+
+.menu .volume {
+	grid-column: 1 / 3;
+	grid-row: 3;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
+}
+
+.menu .volume h3 {
+	opacity: 0.9;
+	font-size: 1.5rem;
+	word-break: keep-all;
+	white-space: nowrap;
+}
+
+.menu .volume button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 0.5rem;
+	background: #1c1c1c;
+	color: #fafafa;
+	font-size: 1rem;
+	height: fit-content;
+	text-align: center;
+	cursor: pointer;
+	width: 60%;
+	transition: all 0.2s ease-in-out;
+}
+
+.menu .volume button:hover {
+	background: #232323;
+}
+
+.menu .volume button:active {
+	scale: 0.95;
+}
+
+.menu .volume .volumeindicator {
+	width: fit-content;
+	height: fit-content;
+	position: relative;
+}
+
+.menu .volume .volumeindicator input[type="number"] {
+	position: absolute;
+	text-align: center;
+	width: 105%;
+	top: -30px;
+	left: 0;
+	background: transparent;
+	outline: none;
+	border: none;
+	color: white;
+	font-size: medium;
+}
+
+.menu .volume .volumeindicator input[type="range"] {
+	-webkit-appearance: none;
+	width: 15vw;
+	height: 5px;
+	background: #1c1c1c;
+	border-radius: 5px;
+	outline: none;
+	opacity: 0.7;
+	transition: opacity 0.2s ease-in-out;
 }
 
 @keyframes showCustomization {
