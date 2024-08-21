@@ -68,7 +68,7 @@ https://github.com/Cocodrulo/skys_notifications/blob/main/html/sounds/bank.mp3?r
 
 |     | Command      | Action                                      |
 | :-- | :----------- | :------------------------------------------ |
-| ⚙️  | `notifymenu` | Open the notification's customization menu. |
+| ⚙️  | `/notifymenu` | Open the notification's customization menu. |
 
 ## Changelog
 
