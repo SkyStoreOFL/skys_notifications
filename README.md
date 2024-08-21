@@ -14,6 +14,7 @@
 ![Static Badge](https://img.shields.io/badge/mission-Making_your_live_easier-blue)
 ![HTML Badge](https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=fff&style=flat)
 ![Lua Badge](https://img.shields.io/badge/Lua-2C2D72?logo=lua&logoColor=fff&style=flat)
+<br/>
 ![GitHub stars](https://img.shields.io/github/stars/cocodrulo/skys_notifications)
 ![GitHub issues](https://img.shields.io/github/issues/cocodrulo/skys_notifications)
 ![GitHub forks](https://img.shields.io/github/forks/cocodrulo/skys_notifications)
