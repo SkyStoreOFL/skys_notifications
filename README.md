@@ -27,7 +27,7 @@
 
 This FiveM notification script provides fully configurable notifications for each player, offering categories like banking, info, error, warning, and success alerts. The script allows each player to customize the notifications sound volume and position to enhance the in-game experience, ensuring players receive the right information in the right place.
 
-## Features
+## 📢 Features
 
 -   Mute/unmute notification sounds.
 -   Change volume of notification sounds.
@@ -38,11 +38,11 @@ This FiveM notification script provides fully configurable notifications for eac
 -   Totaly Open-Source
 -   Fluid in-out animations.
 
-## Showcase
+## 📷 Showcase
 
 ![notification panel and notifications](resources/image.png)
 
-## Sounds
+## 🔊 Sounds
 
 ### Info
 
@@ -70,8 +70,14 @@ https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/bank.mp3?ra
 | :-- | :----------- | :------------------------------------------ |
 | ⚙️  | `/notifymenu` | Open the notification's customization menu. |
 
-## Changelog
+## 📄 Changelog
 
 ### 1.0.0
 
 > -   Intial Release
+
+## 🤝 Contributing
+
+<a href="https://github.com/StoreSky/skys_notifications/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=StoreSky/skys_notifications" />
+</a>
