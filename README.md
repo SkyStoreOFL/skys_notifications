@@ -15,10 +15,10 @@
 ![HTML Badge](https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=fff&style=flat)
 ![Lua Badge](https://img.shields.io/badge/Lua-2C2D72?logo=lua&logoColor=fff&style=flat)
 <br/>
-![GitHub stars](https://img.shields.io/github/stars/cocodrulo/skys_notifications)
-![GitHub issues](https://img.shields.io/github/issues/cocodrulo/skys_notifications)
-![GitHub forks](https://img.shields.io/github/forks/cocodrulo/skys_notifications)
-![GitHub PRs](https://img.shields.io/github/issues-pr/cocodrulo/skys_notifications)
+![GitHub stars](https://img.shields.io/github/stars/StoreSky/skys_notifications)
+![GitHub issues](https://img.shields.io/github/issues/StoreSky/skys_notifications)
+![GitHub forks](https://img.shields.io/github/forks/StoreSky/skys_notifications)
+![GitHub PRs](https://img.shields.io/github/issues-pr/StoreSky/skys_notifications)
 
 </div>
 
@@ -46,15 +46,15 @@ This FiveM notification script provides fully configurable notifications for eac
 
 ### Info
 
-https://github.com/Cocodrulo/skys_notifications/blob/main/html/sounds/info.mp3?raw=true
+https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/info.mp3?raw=true
 
 ### Success
 
-https://github.com/Cocodrulo/skys_notifications/blob/main/html/sounds/success.mp3?raw=true
+https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/success.mp3?raw=true
 
 ### Error
 
-https://github.com/Cocodrulo/skys_notifications/blob/main/html/sounds/error.mp3?raw=true
+https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/error.mp3?raw=true
 
 ### Warning
 
@@ -62,7 +62,7 @@ https://github.com/Cocodrulo/skys_notifications/blob/main/html/sounds/warning.mp
 
 ### Bank
 
-https://github.com/Cocodrulo/skys_notifications/blob/main/html/sounds/bank.mp3?raw=true
+https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/bank.mp3?raw=true
 
 ## 🧞 Commands
 
