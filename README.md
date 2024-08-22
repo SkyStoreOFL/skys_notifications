@@ -19,6 +19,7 @@
 ![GitHub issues](https://img.shields.io/github/issues/StoreSky/skys_notifications)
 ![GitHub forks](https://img.shields.io/github/forks/StoreSky/skys_notifications)
 ![GitHub PRs](https://img.shields.io/github/issues-pr/StoreSky/skys_notifications)
+<a href="https://discord.gg/EuWWfcAMWF" title=""><img alt="Discord Status" src="https://discordapp.com/api/guilds/1092133908583288933/widget.png"></a>
 
 </div>
 
