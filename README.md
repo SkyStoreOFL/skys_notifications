@@ -39,6 +39,10 @@ This FiveM notification script provides fully configurable notifications for eac
 -   Totaly Open-Source
 -   Fluid in-out animations.
 
+## ⚙️ Installation
+
+Accede a la <a href="https://skystore.gitbook.io/sky-store/paid-scripts/skys-notifications">documentación</a> para conocer el método de instalación de este script.
+
 ## 📷 Showcase
 
 ![notification panel and notifications](resources/image.png)
@@ -70,6 +74,14 @@ https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/bank.mp3?ra
 |     | Command      | Action                                      |
 | :-- | :----------- | :------------------------------------------ |
 | ⚙️  | `/notifymenu` | Open the notification's customization menu. |
+
+## 📡 Exports
+
+|     | Command      | Action                                      | Arguments                                    |
+| :-- | :----------- | :------------------------------------------ | :--------------------------------------------|
+| ⚙️  | `NewNotification` | Send a new notification. | **message:** string -> Text of the notification <br/> **notifyType:** string? -> Type of the notification (info, success, warning, error, bank) <br/> **duration:** number? -> Time that the notification will be visible <br/> **icon:** string? -> Fontawsome icon <br/> **title:** string? -> Title of the notification |
+
+<sup> *If the argument type has and "?" it means that is optional.</sup>
 
 ## 📄 Changelog
 
