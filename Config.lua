@@ -1,6 +1,6 @@
 Config = Config or {}
 
-POSITIONS = {
+POSITIONS = { -- You shoulnd't change this
     TOP_LEFT = "1",
     TOP_CENTER = "2",
     TOP_RIGHT = "3",
@@ -11,12 +11,12 @@ POSITIONS = {
     BOTTOM_RIGHT = "8"
 }
 
-Config.defaultDuration = 5000
-Config.defaultPosition = POSITIONS.MIDDLE_RIGHT
-Config.userCustomize = true
-Config.CustomizationCommand = "notifymenu"
+Config.defaultDuration = 5000 -- Default duration of notifications
+Config.defaultPosition = POSITIONS.MIDDLE_RIGHT -- Default position of notifications
+Config.userCustomize = true -- To enable customizing menu
+Config.CustomizationCommand = "notifymenu" -- Command to open customazing menu (above must be enabled)
 
-Config.Lang = {
+Config.Lang = { -- Change strings of the NUI and other parts of the script
     ["test-notification"] = "Esto es una notificación de prueba",
     ["menu-description"] = "Abre el menú de personalización de notificaciones",
     ["html"] = {
