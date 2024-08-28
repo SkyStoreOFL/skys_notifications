@@ -41,7 +41,7 @@ This FiveM notification script provides fully configurable notifications for eac
 
 ## ⚙️ Installation
 
-Accede a la <a href="https://skystore.gitbook.io/sky-store/paid-scripts/skys-notifications">documentación</a> para conocer el método de instalación de este script.
+Access to the <a href="https://skystore.gitbook.io/sky-store/paid-scripts/skys-notifications">docs</a> to know how to install and set up the script.
 
 ## 📷 Showcase
 
