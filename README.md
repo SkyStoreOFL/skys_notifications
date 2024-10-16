@@ -15,10 +15,10 @@
 ![HTML Badge](https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=fff&style=flat)
 ![Lua Badge](https://img.shields.io/badge/Lua-2C2D72?logo=lua&logoColor=fff&style=flat)
 <br/>
-![GitHub stars](https://img.shields.io/github/stars/StoreSky/skys_notifications)
-![GitHub issues](https://img.shields.io/github/issues/StoreSky/skys_notifications)
-![GitHub forks](https://img.shields.io/github/forks/StoreSky/skys_notifications)
-![GitHub PRs](https://img.shields.io/github/issues-pr/StoreSky/skys_notifications)
+![GitHub stars](https://img.shields.io/github/stars/SkyStoreOFL/skys_notifications)
+![GitHub issues](https://img.shields.io/github/issues/SkyStoreOFL/skys_notifications)
+![GitHub forks](https://img.shields.io/github/forks/SkyStoreOFL/skys_notifications)
+![GitHub PRs](https://img.shields.io/github/issues-pr/SkyStoreOFL/skys_notifications)
 <a href="https://discord.gg/EuWWfcAMWF" title=""><img alt="Discord Status" src="https://discordapp.com/api/guilds/1092133908583288933/widget.png"></a>
 
 </div>
@@ -51,23 +51,23 @@ Access to the <a href="https://skystore.gitbook.io/sky-store/paid-scripts/skys-n
 
 ### Info
 
-https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/info.mp3?raw=true
+https://github.com/SkyStoreOFL/skys_notifications/blob/main/html/sounds/info.mp3?raw=true
 
 ### Success
 
-https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/success.mp3?raw=true
+https://github.com/SkyStoreOFL/skys_notifications/blob/main/html/sounds/success.mp3?raw=true
 
 ### Error
 
-https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/error.mp3?raw=true
+https://github.com/SkyStoreOFL/skys_notifications/blob/main/html/sounds/error.mp3?raw=true
 
 ### Warning
 
-https://github.com/Cocodrulo/skys_notifications/blob/main/html/sounds/warning.mp3?raw=true
+https://github.com/SkyStoreOFL/skys_notifications/blob/main/html/sounds/warning.mp3?raw=true
 
 ### Bank
 
-https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/bank.mp3?raw=true
+https://github.com/SkyStoreOFL/skys_notifications/blob/main/html/sounds/bank.mp3?raw=true
 
 ## 🧞 Commands
 
@@ -91,6 +91,6 @@ https://github.com/StoreSky/skys_notifications/blob/main/html/sounds/bank.mp3?ra
 
 ## 🤝 Contributing
 
-<a href="https://github.com/StoreSky/skys_notifications/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=StoreSky/skys_notifications" />
+<a href="https://github.com/SkyStoreOFL/skys_notifications/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=SkyStoreOFL/skys_notifications" />
 </a>
