@@ -51,7 +51,7 @@ let Queue = [];
 
 const positions = {
 	1: { x: "0", y: "0", anim: "from-left from-top", name: "top-left" },
-	2: { x: "40	%", y: "0", anim: "from-top", name: "top-middle" },
+	2: { x: "40%", y: "0", anim: "from-top", name: "top-middle" },
 	3: { x: "80%", y: "0", anim: "from-right from-top", name: "top-right" },
 	4: { x: "0", y: "27.5%", anim: "from-left", name: "middle-left" },
 	5: { x: "80%", y: "27.5%", anim: "from-right", name: "middle-right" },
