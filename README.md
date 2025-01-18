@@ -85,6 +85,10 @@ https://github.com/SkyStoreOFL/skys_notifications/blob/main/html/sounds/bank.mp3
 
 ## 📄 Changelog
 
+### 1.1.0
+
+> -   Changed notification menu background color.
+
 ### 1.0.0
 
 > -   Intial Release
