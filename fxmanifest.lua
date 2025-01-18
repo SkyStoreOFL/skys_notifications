@@ -2,7 +2,7 @@ fx_version "cerulean"
 game "gta5"
 
 author "Cocodrulo"
-version "1.0.0"
+version "1.1.0"
 description "Notification script compatible with any Framework"
 
 ui_page "html/index.html"
